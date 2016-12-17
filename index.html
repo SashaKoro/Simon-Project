@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<link rel='shortcut icon' type='image/x-icon' href='images/simon.ico'/>
+		<link rel="stylesheet" type="text/css" href="simon.css" media="screen" />
+		<title>Simon&#174;</title>
+
+	</head>
+	<body>
+		<audio id="greenSound" src="https://s3.amazonaws.com/freecodecamp/simonSound1.mp3"></audio>
+		<audio id="redSound" src="https://s3.amazonaws.com/freecodecamp/simonSound2.mp3"></audio>
+		<audio id="yellowSound" src="https://s3.amazonaws.com/freecodecamp/simonSound3.mp3"></audio>
+		<audio id="blueSound" src="https://s3.amazonaws.com/freecodecamp/simonSound4.mp3"></audio>
+		<audio id="wrongButtonSound" src="/Users/alexandre/Documents/SimonProject/sounds/344687__korground__error-sound.wav"></audio>
+		<audio id="gameOverSound" src="/Users/alexandre/Documents/SimonProject/sounds/76376__deleted-user-877451__game-over.wav"></audio>
+
+		<div id="simon">
+		<div id="holder">
+		<button disabled onclick="testTheInput(1)" id="green"></button>
+		<button disabled onclick="testTheInput(2)" id="red"></button>
+		<button disabled onclick="testTheInput(3)" id="yellow"></button>
+		<button disabled onclick="testTheInput(4)" id="blue"></button>
+		<div id="Vbox"></div>
+		<div id="Hbox"></div>
+		<div id="thebite"></div>
+		<div id="innercircle"></div>
+		<div id="logobackground">
+			<p id="logo">simon</p>
+			<p id="tm">&#8482;</p>
+		</div>
+		<div id="insidebox"></div>
+		<div id="insidebox2">
+			<p id="restartRow">RESTART&emsp;&emsp;&emsp;START&emsp;&emsp;&emsp;STRICT</p>
+			<div><button onclick="restartTheGame()" id="restart"></button></div>
+			<div><button onclick="startButton()" id="start"></button></div>
+			<div><a href="#" onclick="strictMode()" class="disabled" id="strict"></a></div>
+			<div id="countbox"><p id="count"></p></div>
+			<div><a href="#" class="speed">&nbsp;</a></div>
+			<p id="SPEED" class="500" >SPEED</p>
+			<p id="slow">SLOW</p>
+			<p id="fast">FAST</p>
+			<div><a href="#" class="off">&nbsp;</a></div>
+			<p id="off">OFF</p>
+			<p id="on">ON</p>
+		</div>
+		<div id="ierase"></div>
+		</div>
+		</div>
+	</body>
+
+	<script src="simon.js"></script>
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$("#start").attr('disabled', true);
+			$("#restart").attr('disabled', true);
+
+    		$(".speed").click(function(){
+        		$(this).toggleClass("fast");
+        		if($(this).hasClass("fast")) {
+        			$("#SPEED").removeClass("500");
+        			$("#SPEED").addClass("300");
+        		}
+        		if(!$(this).hasClass("fast")) {
+        			$("#SPEED").removeClass("300");
+        			$("#SPEED").addClass("500");
+        		}
+    		});
+    		$(".off").click(function(){
+    			$(this).toggleClass("on");
+    			if($(this).hasClass("on")) {
+					$("#start").attr('disabled', false);
+					$("#strict").removeClass("disabled");
+					$("#count").html('00');
+				}
+    			if (!$(this).hasClass("on")) {
+					$("#restart").attr('disabled', true);
+					$("#start").attr('disabled', true);
+					$("#strict").addClass('disabled');
+					setTimeout(turnOffTheGame, 200);
+    			}
+    		});
+    		$("#strict").click(function(){
+        		$(this).toggleClass("strictON");
+    		});
+		});
+	</script>
+
+</html>
