@@ -86,7 +86,10 @@ function beginGame() {
 	} else {
 		document.getElementById("count").innerHTML = sequence.length;
 	}
-
+	if (sequence.length === 21) {
+		alert("Congratulations, you have beaten the game");
+		restartTheGame();
+	}
 	for (var i = 0; i <= sequence.length; i++) {
 		var j = 0;
 		(function(index) {
