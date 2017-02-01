@@ -5,7 +5,7 @@ body {
 	height: 600px;
 	width: 600px;
 	margin: auto;
-	background-color: #1C1C1C;
+	background-color: #232323;
 	border-radius: 300px;
 	margin-top: 75px;
 	border: 5px solid #2E2E2E;
@@ -79,7 +79,7 @@ button:focus {
 	background-color: #02026A;
 }
 #Vbox {
-	background-color: #1C1C1C;
+	background-color: #232323;
 	height: 570px;
 	width: 40px;
 	margin-left: 250px;
@@ -87,7 +87,7 @@ button:focus {
 	float: left;
 }
 #Hbox {
-	background-color: #1C1C1C;
+	background-color: #232323;
 	height: 40px;
 	float: left;
 	width: 570px;
@@ -95,7 +95,7 @@ button:focus {
 	margin-left: -15px;
 }
 #thebite {
-	background-color: #1C1C1C;
+	background-color: #232323;
 	float: left;
 	height: 280px;
 	width: 280px;
@@ -114,7 +114,7 @@ button:focus {
 }
 #logobackground {
 	float: left;
-	background-color: #1C1C1C;
+	background-color: #232323;
 	height: 120px;
 	width: 240px;
 	border-radius: 300px 300px 0 0;
@@ -135,7 +135,7 @@ button:focus {
 	float: left;
 	height: 12px;
 	width: 20px;
-	background-color: #1C1C1C;
+	background-color: #232323;
 	margin-top: -367px;
 	margin-left: 215px;
 }
@@ -162,7 +162,7 @@ button:focus {
 	font-family: Impact, Charcoal, sans-serif;
 }
 #restartRow {
-	color: #1C1C1C;
+	color: #232323;
 	margin-top: 3px;
 	margin-left: 23px;
 	font-size: 12px;
@@ -191,7 +191,7 @@ button:focus {
 	height: 23px;
 	width: 23px;
 	border-radius: 50px;
-	border: 4px solid black;	
+	border: 4px solid black;
 }
 #start:active {
 	transform: translateY(1px);
@@ -204,7 +204,7 @@ button:focus {
 	height: 15px;
 	width: 15px;
 	border-radius: 50px;
-	border: 4px solid black;	
+	border: 4px solid black;
 }
 #strict:active {
 	transform: translateY(1px);
@@ -309,4 +309,3 @@ button:focus {
 	font-size: 10px;
 	font-family: Tahoma, Geneva, sans-serif;
 }
-

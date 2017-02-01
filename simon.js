@@ -1,24 +1,20 @@
+let strictModeStatus = false;
+let sequence = [];
+let replayLastSequence = false;
+let tryAgainFromStart = false;
+let continueValue = true;
+let z = 0;
+let restart = false;
+let off = false;
+
 function startButton() {
 	off = false;
 	document.getElementById("start").disabled = true;
 	setTimeout(beginGame, 500);
 }
 
-var strictModeStatus = false;
-var sequence = [];
-var replayLastSequence = false;
-var tryAgainFromStart = false;
-var continueValue = true;
-var z = 0;
-var restart = false;
-var off = false;
-
 function strictMode() {
-	if (!strictModeStatus) {
-		strictModeStatus = true;
-	} else {
-		strictModeStatus = false;
-	}
+	strictModeStatus = !strictModeStatus;
 }
 
 function turnOffTheGame() {
@@ -63,13 +59,9 @@ function enableButtons() {
 }	
 
 function beginGame() {
-	var speed = Number(document.getElementById('SPEED').className);
-	if (restart) {
-		return;
-	}
-	if (off) {
-		return;
-	}
+	let speed = Number(document.getElementById('SPEED').className);
+	if (restart) return;
+	if (off) return;
 	disableButtons();
 	if (tryAgainFromStart) {
 		sequence = [];
@@ -77,7 +69,7 @@ function beginGame() {
 		replayLastSequence = false;
 	}
 	if (!replayLastSequence) {
-		var randomButton = Math.floor(Math.random() * (4) + 1);
+		let randomButton = Math.floor(Math.random() * (4) + 1);
 		sequence.push(randomButton);
 		replayLastSequence = false;
 	}
@@ -90,15 +82,12 @@ function beginGame() {
 		alert("Congratulations, you have beaten the game");
 		restartTheGame();
 	}
-	for (var i = 0; i <= sequence.length; i++) {
+	for (let i = 0; i <= sequence.length; i++) {
 		var j = 0;
 		(function(index) {
 			setTimeout(function() { 
 				setTimeout(clearButtonColor, speed);
-				if (restart) {
-					return;
-				}
-
+				if (restart) return;
 				if (j < sequence.length) {
 					if (sequence[j] === 1) {
 						document.getElementById("green").style.background = '#41D559';
@@ -124,8 +113,7 @@ function beginGame() {
 					document.getElementById("blue").style.background = '#000A8C';
 					enableButtons();
 				}
-
-				j += 1;
+				j ++;
 			 }, i * (2 * speed));
 		})(i);
 	}
@@ -143,9 +131,7 @@ function testTheInput(lastPress) {
 				setTimeout(wrongButtonEffect, 200);
 				z = 0;
 				replayLastSequence = true;	
-				if (restart) {
-					return;
-				}
+				if (restart) return;
 				setTimeout(beginGame, 2500);
 				continueValue = false;
 			} else {
@@ -154,9 +140,7 @@ function testTheInput(lastPress) {
 				document.getElementById("count").innerHTML = '00';
 				z = 0;
 				tryAgainFromStart = true;
-				if (restart) {
-					return;
-				}
+				if (restart) return;
 				setTimeout(beginGame, 2500);
 			}
 		}
@@ -165,9 +149,7 @@ function testTheInput(lastPress) {
 		disableButtons();
 		replayLastSequence = false;
 		z = 0;
-		if (restart) {
-			restartTheGame();
-		}
+		if (restart) restartTheGame();
 		setTimeout(beginGame, 1500);
 	}
 }
@@ -201,13 +183,13 @@ function clearButtonColor() {
 }
 
 function wrongButtonEffect() {
-	var wrongbutton = document.getElementById('wrongButtonSound');
+	const wrongbutton = document.getElementById('wrongButtonSound');
 	wrongbutton.play(); 
 	wrongButtonFlash();	
 }
 
 function wrongButtonFlash() {
-	for (var i = 0; i < 3; i++) {
+	for (let i = 0; i < 3; i++) {
 		(function(index) {
 			setTimeout(function() { 
 				document.getElementById("green").style.background = '#41D559';
@@ -221,15 +203,13 @@ function wrongButtonFlash() {
 }
 
 function gameOverEffect() {
-	var gameover = document.getElementById('gameOverSound');
+	const gameover = document.getElementById('gameOverSound');
 	gameover.play();   
 	gameOverFlash();
 }
 
 function gameOverFlash() {
-	if (restart) {
-		return;
-	}
+	if (restart) return;
 	document.getElementById("green").style.background = '#41D559';
 	document.getElementById("red").style.background = '#EC5E5E';
 	document.getElementById("yellow").style.background = "#DBEA0A";
